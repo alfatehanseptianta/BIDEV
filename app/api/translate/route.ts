@@ -4,6 +4,12 @@ import { defaultLocale, locales, type Locale } from "@/i18n/config"
 
 export const runtime = "nodejs"
 
+const corsHeaders = {
+  "Access-Control-Allow-Origin": process.env.TRANSLATE_ALLOWED_ORIGIN ?? "*",
+  "Access-Control-Allow-Methods": "POST, OPTIONS",
+  "Access-Control-Allow-Headers": "Content-Type",
+}
+
 interface TranslateRequestBody {
   texts: string[]
   to?: string
@@ -24,7 +30,7 @@ export async function POST(request: Request) {
   try {
     const body = (await request.json()) as TranslateRequestBody
     if (!body || !Array.isArray(body.texts)) {
-      return NextResponse.json({ error: "Invalid payload" }, { status: 400 })
+      return NextResponse.json({ error: "Invalid payload" }, { status: 400, headers: corsHeaders })
     }
 
     const target = resolveLocale(body.to) ?? defaultLocale
@@ -46,9 +52,13 @@ export async function POST(request: Request) {
       }
     }
 
-    return NextResponse.json({ translations })
+    return NextResponse.json({ translations }, { headers: corsHeaders })
   } catch (error) {
     console.error("Translation API failure:", error)
-    return NextResponse.json({ error: "Translation service unavailable" }, { status: 500 })
+    return NextResponse.json({ error: "Translation service unavailable" }, { status: 500, headers: corsHeaders })
   }
+}
+
+export function OPTIONS() {
+  return new Response(null, { status: 204, headers: corsHeaders })
 }

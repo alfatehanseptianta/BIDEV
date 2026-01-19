@@ -5,6 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { ArrowLeft, ArrowRight, CheckCircle, Clock, Users, AlertCircle, Briefcase } from "lucide-react"
 import Link from "next/link"
+import { services } from "../services-data"
 
 // This would come from CMS in production
 const serviceData = {
@@ -110,6 +111,10 @@ const serviceData = {
         "Yes, we offer implementation support packages that include training, monitoring framework development, and ongoing advisory services to ensure successful policy rollout.",
     },
   ],
+}
+
+export function generateStaticParams() {
+  return services.map((service) => ({ slug: service.slug }))
 }
 
 export default function ServiceDetailPage() {

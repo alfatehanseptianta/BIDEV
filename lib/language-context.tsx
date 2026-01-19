@@ -33,6 +33,9 @@ const LanguageContext = createContext<LanguageContextType | undefined>(undefined
 const TRANSLATION_CACHE_KEY = "bidev-translation-cache"
 const SKIP_TAGS = new Set(["SCRIPT", "STYLE", "NOSCRIPT", "IFRAME"])
 const AUTO_TRANSLATE_ATTRS = ["placeholder", "aria-label", "title", "alt"] as const
+const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH ?? ""
+const TRANSLATE_ENDPOINT = process.env.NEXT_PUBLIC_TRANSLATE_ENDPOINT ?? `${BASE_PATH}/api/translate`
+const AUTO_TRANSLATE_ENABLED = process.env.NEXT_PUBLIC_ENABLE_AUTO_TRANSLATE !== "false"
 
 type AttributeItem = {
   element: Element
@@ -60,9 +63,13 @@ function createEmptyCache(): TranslationCache {
 
 function sanitizeCacheSegment(segment: unknown): Record<string, string> {
   if (!segment || typeof segment !== "object") return {}
-  return Object.fromEntries(
-    Object.entries(segment as Record<string, unknown>).filter(([, value]) => typeof value === "string"),
-  )
+  const entries: Array<[string, string]> = []
+  for (const [key, value] of Object.entries(segment as Record<string, unknown>)) {
+    if (typeof value === "string") {
+      entries.push([key, value])
+    }
+  }
+  return Object.fromEntries(entries)
 }
 
 function normalizeTranslationCache(raw: unknown): TranslationCache {
@@ -185,6 +192,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
 
   const fetchTranslations = useCallback(
     async (targetLanguage: Language, texts: string[]) => {
+      if (!AUTO_TRANSLATE_ENABLED || !TRANSLATE_ENDPOINT) return
       if (texts.length === 0) return
 
       const cache =
@@ -193,7 +201,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
       for (let i = 0; i < texts.length; i += 10) {
         const chunk = texts.slice(i, i + 10)
         try {
-          const response = await fetch("/api/translate", {
+          const response = await fetch(TRANSLATE_ENDPOINT, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ texts: chunk, to: targetLanguage }),
@@ -220,6 +228,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
 
   const translateDom = useCallback(
     async (targetLanguage: Language) => {
+      if (!AUTO_TRANSLATE_ENABLED || !TRANSLATE_ENDPOINT) return
       if (typeof document === "undefined") return
       if (isTranslatingRef.current) {
         pendingTranslateRef.current = targetLanguage
@@ -319,6 +328,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     if (!cacheReady) return
     if (typeof document === "undefined") return
+    if (!AUTO_TRANSLATE_ENABLED || !TRANSLATE_ENDPOINT) return
 
     translateDom(language)
 

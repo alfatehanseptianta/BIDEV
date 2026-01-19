@@ -6,10 +6,15 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { caseStudies } from "../case-studies-data"
 
 export const metadata: Metadata = {
   title: "Case Study Detail | BIDEV Institute",
   description: "Detailed case study showcasing our impact and methodology.",
+}
+
+export function generateStaticParams() {
+  return caseStudies.map((study) => ({ slug: study.slug }))
 }
 
 const caseStudyData = {
