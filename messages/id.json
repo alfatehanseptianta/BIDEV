@@ -1,0 +1,109 @@
+{
+  "Navbar": {
+    "links": {
+      "about": "Tentang",
+      "aboutBidev": "Tentang BIDEV",
+      "howWeWork": "Cara Kerja Kami",
+      "expertiseAreas": "Bidang Keahlian",
+      "governance": "Tata Kelola",
+      "partners": "Mitra & Jaringan",
+      "annualReport": "Laporan Tahunan",
+      "careers": "Karir",
+      "boardOfExperts": "Dewan Pakar",
+      "services": "Layanan",
+      "servicesAll": "Semua Layanan",
+      "solutionsByProblem": "Solusi berdasarkan Masalah",
+      "caseStudies": "Studi Kasus",
+      "clientTestimonials": "Testimoni Klien",
+      "forGovernment": "Untuk Pemerintah",
+      "forPrivate": "Untuk Swasta",
+      "prakarsa": "Prakarsa",
+      "prakarsaOverview": "Ringkasan",
+      "prakarsaFeatures": "Fitur",
+      "prakarsaPackages": "Paket",
+      "prakarsaSecurity": "Keamanan",
+      "prakarsaDemo": "Minta Demo",
+      "insights": "Wawasan",
+      "publications": "Publikasi",
+      "gallery": "Galeri",
+      "topicHubs": "Topik Unggulan",
+      "newsletter": "Newsletter",
+      "knowledgeProducts": "Produk Pengetahuan",
+      "methodologyLibrary": "Perpustakaan Metodologi",
+      "downloadCenter": "Pusat Unduhan",
+      "events": "Acara",
+      "trust": "Kepercayaan",
+      "integrityCenter": "Pusat Integritas",
+      "qualityAssurance": "Penjaminan Mutu",
+      "ethicsStandards": "Etika & Standar",
+      "credentials": "Kredensial",
+      "dataPolicy": "Kebijakan Data",
+      "security": "Keamanan"
+    },
+    "actions": {
+      "consultExperts": "Konsultasi Pakar",
+      "submitRfp": "Ajukan TOR/RFP",
+      "media": "Media"
+    },
+    "language": {
+      "indonesian": "Bahasa Indonesia",
+      "english": "English"
+    }
+  },
+  "Footer": {
+    "cta": {
+      "title": "Tetap terhubung",
+      "description": "Terima ringkasan kebijakan, playbook, dan undangan acara dari Bandung Institute for Development & Urban Futures.",
+      "newsletter": "Gabung newsletter",
+      "shareBrief": "Bagikan brief"
+    },
+    "brand": {
+      "tagline": "Institut",
+      "description": "Bandung Institute for Development and Urban Futures - menjembatani pengetahuan, kebijakan, dan dampak di seluruh Indonesia."
+    },
+    "sections": {
+      "institute": "Institut",
+      "services": "Layanan",
+      "resources": "Sumber Daya",
+      "trust": "Kepercayaan"
+    },
+    "links": {
+      "aboutUs": "Tentang Kami",
+      "boardOfExperts": "Dewan Pakar",
+      "expertiseAreas": "Bidang Keahlian",
+      "howWeWork": "Cara Kerja Kami",
+      "annualReport": "Laporan Tahunan",
+      "careers": "Karir",
+      "allServices": "Semua Layanan",
+      "prakarsa": "PRAKARSA",
+      "caseStudies": "Studi Kasus",
+      "forGovernment": "Untuk Pemerintah",
+      "forPrivateSector": "Untuk Swasta",
+      "publications": "Publikasi",
+      "newsletter": "Newsletter",
+      "downloadCenter": "Pusat Unduhan",
+      "events": "Acara",
+      "mediaKit": "Kit Media",
+      "integrityCenter": "Pusat Integritas",
+      "qualityStandards": "Penjaminan Mutu",
+      "ethicsStandards": "Etika & Standar",
+      "dataPolicy": "Kebijakan Data"
+    },
+    "address": {
+      "line1": "Gedung Rektorat ITB, Lt. 3",
+      "line2": "Jl. Ganesha No. 10, Bandung 40132"
+    },
+    "contact": {
+      "government": "Pemerintah",
+      "privateInvestor": "Swasta/Investor",
+      "media": "Media",
+      "academic": "Akademik"
+    },
+    "legal": {
+      "privacyPolicy": "Kebijakan Privasi",
+      "termsOfService": "Syarat Layanan",
+      "cookiePolicy": "Kebijakan Cookie"
+    },
+    "copyright": "(c) {year} BIDEV - Bandung Institute for Development and Urban Futures. Hak cipta dilindungi."
+  }
+}
